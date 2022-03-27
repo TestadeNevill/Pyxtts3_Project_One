@@ -4,17 +4,35 @@ import asyncio
 import requests
 from jokeapi import Jokes
 
-# engine = pyttsx3.init()
+engine = pyttsx3.init()
 #
 # def greet():
 #     engine.say(
 #         "Hello duh testa as long as you believe in yourself "
 #         "you can accomplish any thing you desire")
+# url = "https://v2.jokeapi.dev/joke/"
+# payload = {'type':'twopart'}
+response = requests.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart&amount=2", params=payload)
+# response.status_code
+# response.ok
+engine.say(response.json())
 
-response = requests.get("https://v2.jokeapi.dev/joke/")
-response.status_code
-response.ok
-print(response.text)
+# async def print_joke():
+#     j = await Jokes()
+#     joke = await j.get_joke(category=['programming'], blacklist=['nsfw', 'racist', 'religious', 'political', 'sexist'])
+#
+#
+#     if joke["type"] == "twopart":
+#         print(joke["setup"])
+#         print(joke["delivery"])
+#     else:
+#         print(joke["joke"])
+#
+#     print_joke()
+jokes_data = response.text
+
+
+print(jokes_data)
 
 
 # async def print_joke():
