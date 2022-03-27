@@ -1,30 +1,36 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
 import pyttsx3
-engine = pyttsx3.init()
+import asyncio
+import requests
+from jokeapi import Jokes
 
-def greet():
-    engine.say(
-        "Hello duh testa as long as you believe in yourself "
-        "you can accomplish any thing you desire")
+# engine = pyttsx3.init()
+#
+# def greet():
+#     engine.say(
+#         "Hello duh testa as long as you believe in yourself "
+#         "you can accomplish any thing you desire")
+
+response = requests.get("https://v2.jokeapi.dev/joke/")
+response.status_code
+response.ok
+print(response.text)
 
 
-greet()
+# async def print_joke():
+#     j = await Jokes()
+#     joke = await j.get_joke(category=['programming'], blacklist=['nsfw', 'racist', 'religious', 'political', 'sexist'])
+#     if joke["type"] == "single":
+#         print(joke["joke"])
+#     else:
+#         print(joke["setup"])
+#         print(joke["delivery"])
+#     asyncio.run(print_joke())
 
-# engine.say('Sally sells seashells by the seashore.')
-# engine.say('The quick brown fox jumped over the lazy dog.')
-engine.runAndWait()
+
+#
+# # engine.say('Sally sells seashells by the seashore.')
+# # engine.say('The quick brown fox jumped over the lazy dog.')
+
+
+
