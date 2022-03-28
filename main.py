@@ -1,3 +1,4 @@
+import json
 
 import pyttsx3
 import asyncio
@@ -11,7 +12,7 @@ engine = pyttsx3.init()
 #         "Hello duh testa as long as you believe in yourself "
 #         "you can accomplish any thing you desire")
 # url = "https://v2.jokeapi.dev/joke/"
-# payload = {'type':'twopart'}
+payload = {'type':'twopart'}
 response = requests.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart&amount=2", params=payload)
 # response.status_code
 # response.ok
@@ -30,9 +31,24 @@ engine.say(response.json())
 #
 #     print_joke()
 jokes_data = response.text
-
-
 print(jokes_data)
+class Joke:
+    def __init__(self, setup, delivery) -> None:
+        self.setup = setup
+        self.delivery = delivery
+
+    def __str__(self) -> str:
+        return f"setup {self.setup} delivery {self.delivery}"
+jokes = []
+
+for joke in jokes:
+    print(joke)
+# jsonData = json.loads(requests)
+# print(jsonData)
+pyttsx3.speak(Joke)
+#
+# print(jokes)
+
 
 
 # async def print_joke():
