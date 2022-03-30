@@ -1,20 +1,26 @@
 
 import pyttsx3
 import requests
+# import json
 
 
 engine = pyttsx3.init()
 
 
 payload = {'type': 'twopart'}
-response = requests.get \
-    ("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,explicit&type=twopart&amount=2", params=payload)
+response = requests.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=nsfw,religious,political,racist,sexist,"
+                        "explicit&type=twopart&amount=2", params=payload)
 
-engine.say(response.json())
+# engine.say(response.json())
+
+print(response.json())
+
+#
+# jokes_data = response.
+# json_data = json.loads(jokes_data)
+# print(json_data)
 
 
-jokes_data = response.text
-print(jokes_data)
 class Joke:
 
     def __init__(self, setup, delivery) -> None:
@@ -25,4 +31,4 @@ class Joke:
         return f"setup {self.setup} delivery {self.delivery}"
 
 
-pyttsx3.speak(Joke)
+# pyttsx3.speak(Joke)
